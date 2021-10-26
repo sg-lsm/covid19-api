@@ -4,7 +4,7 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 const Contents = () => {
   const [confirmedData, setConfirmedData] = useState({});
-  const [quarantinedData,setquarantinedData] = useState({});
+  const [quarantinedData, setquarantinedData] = useState({});
   const [comparedData, setcomparedData] = useState({});
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const Contents = () => {
         const active = cur.Active;
         const death = cur.Deaths;
         const recovered = cur.Recovered;
+        console.log(confirmed);
 
         const findItem = acc.find((a) => a.year === year && a.month === month);
 
@@ -73,7 +74,7 @@ const Contents = () => {
           },
         ],
       });
-      const last = arr[arr.length-1]
+      const last = arr[arr.length - 10];
       setcomparedData({
         labels: ["확진자", "격리 해제", "사망"],
         datasets: [
@@ -88,7 +89,7 @@ const Contents = () => {
       });
     };
     fetchEvents();
-  },[]);
+  }, []);
 
   return (
     <section>
@@ -131,7 +132,7 @@ const Contents = () => {
               ({
                 title: {
                   display: true,
-                  text: `누적 확진, 해제, 사망 (${new Date().getMonth()+1})`,
+                  text: `누적 확진, 해제, 사망 (${new Date().getMonth() + 1})`,
                   fontSize: 16,
                 },
               },
